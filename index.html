@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <title>🎤 Sesli Not Defterim</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Üst Başlık -->
+        <header>
+            <h1>🎤 Sesli Not Defterim</h1>
+            <p class="subtitle">Konuş, not olsun!</p>
+        </header>
+
+        <!-- Not Yazma Bölümü -->
+        <div class="note-section">
+            
+            <!-- Şablon Seçici -->
+            <div class="form-group">
+                <label>📋 Not Şablonu:</label>
+                <select id="templateSelect">
+                    <option value="genel">📝 Genel Not</option>
+                    <option value="toplanti">💼 Toplantı Notu</option>
+                    <option value="fikir">💡 Fikir Notu</option>
+                    <option value="ders">📚 Ders Notu</option>
+                    <option value="gunluk">📖 Günlük</option>
+                </select>
+            </div>
+
+            <!-- Not Başlığı -->
+            <div class="form-group">
+                <label>📌 Not Başlığı:</label>
+                <input type="text" id="noteTitle" placeholder="Başlık yazın...">
+            </div>
+
+            <!-- Sesli Not Butonu -->
+            <button id="voiceBtn" class="voice-btn">
+                <span class="btn-icon">🎤</span>
+                <span class="btn-text">Sesli Not Başlat</span>
+            </button>
+
+            <!-- Durum Göstergesi -->
+            <div id="statusText" class="status-text"></div>
+
+            <!-- Not Alanı -->
+            <div class="form-group">
+                <label>✍️ Notunuz:</label>
+                <textarea id="noteText" placeholder="Mikrofona basıp konuşun veya buraya yazın..." rows="12"></textarea>
+            </div>
+
+            <!-- İşlem Butonları -->
+            <div class="action-buttons">
+                <button id="saveBtn" class="btn btn-success">
+                    💾 Kaydet
+                </button>
+                <button id="shareBtn" class="btn btn-info">
+                    📤 Paylaş
+                </button>
+                <button id="clearBtn" class="btn btn-danger">
+                    🗑️ Temizle
+                </button>
+            </div>
+        </div>
+
+        <!-- Kaydedilen Notlar -->
+        <div class="saved-notes-section">
+            <div class="section-header">
+                <h2>📚 Kaydedilen Notlar</h2>
+                <div class="notes-actions">
+                    <button id="exportBtn" class="btn btn-small">📥 Dışa Aktar</button>
+                    <button id="importBtn" class="btn btn-small">📤 İçe Aktar</button>
+                    <input type="file" id="importFile" accept=".json" style="display:none">
+                </div>
+            </div>
+            
+            <!-- Arama -->
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Notlarda ara...">
+            </div>
+
+            <!-- Notlar Listesi -->
+            <div id="notesList"></div>
+        </div>
+    </div>
+
+    <!-- Modal (Not Görüntüleme) -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate" class="modal-date"></p>
+            <div id="modalText" class="modal-text"></div>
+            <div class="modal-actions">
+                <button id="modalEdit" class="btn btn-info">✏️ Düzenle</button>
+                <button id="modalDelete" class="btn btn-danger">🗑️ Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
